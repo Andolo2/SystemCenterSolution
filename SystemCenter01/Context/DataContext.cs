@@ -9,13 +9,25 @@ namespace SystemCenter01.Context
 {
     internal class DataContext : DbContext
     {
+        private readonly string _connectionString = @"";
 
         public DataContext()
         {
 
         }
-        public DataContext(DbContextOptions options) : base(options) // Add <Tickets>
+        public DataContext(DbContextOptions<DataContext> options) : base(options) 
         {
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+                optionsBuilder.UseSqlServer(_connectionString);
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
