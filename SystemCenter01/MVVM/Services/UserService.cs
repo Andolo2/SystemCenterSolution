@@ -87,32 +87,7 @@ namespace SystemCenter01.MVVM.Services
         }
 
 
-         public static  ObservableCollection<UserModel> Users()
-        {
-
-
-            foreach (var _item in _items)
-            {
-                _items.Add(new UserModel // should be _items
-                {
-                    Id = _item.Id,
-                    FirstName = _item.FirstName,
-                    LastName = _item.LastName,
-                    Email = _item.Email,
-                    PhoneNumber = _item.PhoneNumber,
-                    ////DepartmentName = _item.Department.DepartmentName,
-                    ////StreetName = _item.Department.StreetName,
-                    ////PostalCode = _item.Department.PostalCode,
-                    ////City = _item.Department.PostalCode,
-
-
-                });
-            }
-
-            Console.WriteLine(_items);
-            return _items;
-
-        }
+      
 
        
 
