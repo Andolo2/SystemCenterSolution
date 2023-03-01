@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +16,10 @@ namespace SystemCenter01.MVVM.Services
     public class UserService : ObservableObject
     {
         private static DataContext _context = new DataContext(); 
-        private static ObservableCollection<UserModel> _users;
+
+        private static ObservableCollection<UserModel> _items;
+
+
 
         public async Task SaveTicketToDatabaseAsync(UserModel user)
         {
@@ -56,12 +60,14 @@ namespace SystemCenter01.MVVM.Services
             await _context.SaveChangesAsync();
         }
 
-        public static async Task<IEnumerable<UserModel>> GetAllAsync()
+        public static async Task<ObservableCollection<UserModel>> GetAllAsync()
         {
-            var _items = new List<UserModel>();
+            Console.WriteLine("test3");
+
+           
 
             foreach (var _item in await _context.Users.Include(x => x.Department).ToListAsync())
-              _users.Add(new UserModel // should be _items
+                _items.Add(new UserModel // should be _items
                 {
                    Id = _item.Id,
                    FirstName = _item.FirstName,
@@ -72,17 +78,45 @@ namespace SystemCenter01.MVVM.Services
                    StreetName = _item.Department.StreetName,
                    PostalCode = _item.Department.PostalCode,
                    City = _item.Department.PostalCode,
-                   
+
 
                 });
-
+            Console.WriteLine(_items);
             return _items;
+            
         }
 
-        public static ObservableCollection<UserModel> Users()
+
+         public static  ObservableCollection<UserModel> Users()
         {
-            return _users;
+
+
+            foreach (var _item in _items)
+            {
+                _items.Add(new UserModel // should be _items
+                {
+                    Id = _item.Id,
+                    FirstName = _item.FirstName,
+                    LastName = _item.LastName,
+                    Email = _item.Email,
+                    PhoneNumber = _item.PhoneNumber,
+                    ////DepartmentName = _item.Department.DepartmentName,
+                    ////StreetName = _item.Department.StreetName,
+                    ////PostalCode = _item.Department.PostalCode,
+                    ////City = _item.Department.PostalCode,
+
+
+                });
+            }
+
+            Console.WriteLine(_items);
+            return _items;
+
         }
+
+       
+
+        
 
 
     }
