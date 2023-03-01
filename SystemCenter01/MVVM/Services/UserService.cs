@@ -60,9 +60,9 @@ namespace SystemCenter01.MVVM.Services
             await _context.SaveChangesAsync();
         }
 
-        public static async Task<ObservableCollection<UserModel>> GetAllAsync()
+        public static async Task<ObservableCollection<UserModel>> GetAllUsersAsync()
         {
-            Console.WriteLine("test3");
+            Trace.WriteLine("test3");
 
            
 

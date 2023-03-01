@@ -55,7 +55,7 @@
                 <TextBox Text="{Binding SelectedContact.PostalCode}"/>
                 <TextBox Text="{Binding SelectedContact.City}"/>
 
-                <Button Command="{Binding DisplayAllUsersCommand}" Content="Update"/>
+                <!--<Button Command="{Binding DisplayAllUsersCommand}" Content="Update"/>-->
             </StackPanel>
 
         </Grid>

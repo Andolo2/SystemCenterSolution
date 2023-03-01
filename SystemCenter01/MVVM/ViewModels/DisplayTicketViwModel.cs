@@ -20,7 +20,7 @@ namespace SystemCenter01.MVVM.ViewModels
 
 
         [ObservableProperty]
-        private ObservableCollection<UserModel> displayusers = UserService.GetAllAsync();
+        private ObservableCollection<UserModel> displayusers = UserService.GetAllUsersAsync();
 
 
 
