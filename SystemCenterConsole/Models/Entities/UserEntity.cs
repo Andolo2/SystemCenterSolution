@@ -1,12 +1,14 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 
-namespace SystemCenter01.MVVM.Models.Entities
+namespace SystemCenterConsole.Models.Entities
 {
     public class UserEntity
     {
@@ -25,17 +27,12 @@ namespace SystemCenter01.MVVM.Models.Entities
         public string? PhoneNumber { get; set; }
 
 
-
-
-
-
-
         [Required]
         public int DepartmentId { get; set; }
-        public DepartmentEntity Department { get; set; } = null!;
-        
-        //public int TicketId { get; set; }
-        public TicketEntity Tickets { get; set; } = null!;
+        public DepartmentsEntity Department { get; set; } = null!;
 
+        [Required]
+        public int TicketId { get; set; }
+       public TicketsEntity Tickets { get; set; } = null!;
     }
 }

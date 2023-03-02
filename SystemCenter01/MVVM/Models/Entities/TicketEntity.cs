@@ -27,6 +27,8 @@ namespace SystemCenter01.MVVM.Models.Entities
 
         public Status Statuses { get; set; }
 
+       
+
 
     }
 }

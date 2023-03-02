@@ -17,7 +17,7 @@ namespace SystemCenter01.MVVM.Services
     {
         private static DataContext _context = new DataContext(); 
 
-        private static ObservableCollection<UserModel> _items;
+       // private static  ObservableCollection<UserModel> _items;
 
 
 
@@ -60,14 +60,14 @@ namespace SystemCenter01.MVVM.Services
             await _context.SaveChangesAsync();
         }
 
-        public static async Task<ObservableCollection<UserModel>> GetAllUsersAsync()
+        public static async Task<IEnumerable<UserModel>> GetAllUsersAsync()
         {
-            Trace.WriteLine("test3");
 
-           
+
+            var _items = new List<UserModel>();
 
             foreach (var _item in await _context.Users.Include(x => x.Department).ToListAsync())
-                _items.Add(new UserModel // should be _items
+                _items.Add(new UserModel 
                 {
                    Id = _item.Id,
                    FirstName = _item.FirstName,
@@ -81,10 +81,15 @@ namespace SystemCenter01.MVVM.Services
 
 
                 });
-            Console.WriteLine(_items);
+
+
+            
+              
             return _items;
             
         }
+
+
 
 
       

@@ -20,7 +20,7 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <ListView ItemsSource="{Binding Displayusers}" HorizontalContentAlignment="Stretch" SelectionMode="Single" SelectedItem="{Binding SelectedContact}"  >
+            <ListView ItemsSource="{Binding LoadUsersAsyncCommand}" HorizontalContentAlignment="Stretch" SelectionMode="Single" SelectedItem="{Binding Selectedcontact}"  >
                 <ListView.ItemTemplate>
                     <DataTemplate DataType="{x:Type models:UserModel}" >
                         <Grid Margin="10">
@@ -46,16 +46,16 @@
             </ListView>
 
             <StackPanel Grid.Column="1" Width="200">
-                <TextBox Text="{Binding SelectedContact.FirstName}"/>
-                <TextBox Text="{Binding SelectedContact.LastName}"/>
-                <TextBox Text="{Binding SelectedContact.Email}"/>
-                <TextBox Text="{Binding SelectedContact.PhoneNumber}"/>
-                <TextBox Text="{Binding SelectedContact.DepartmentName}"/>
-                <TextBox Text="{Binding SelectedContact.StreetName}"/>
-                <TextBox Text="{Binding SelectedContact.PostalCode}"/>
-                <TextBox Text="{Binding SelectedContact.City}"/>
+                <TextBox Text="{Binding Selectedcontact.FirstName}"/>
+                <TextBox Text="{Binding Selectedcontact.LastName}"/>
+                <TextBox Text="{Binding Selectedcontact.Email}"/>
+                <TextBox Text="{Binding Selectedcontact.PhoneNumber}"/>
+                <TextBox Text="{Binding Selectedcontact.DepartmentName}"/>
+                <TextBox Text="{Binding Selectedcontact.StreetName}"/>
+                <TextBox Text="{Binding Selectedcontact.PostalCode}"/>
+                <TextBox Text="{Binding Selectedcontact.City}"/>
 
-                <!--<Button Command="{Binding DisplayAllUsersCommand}" Content="Update"/>-->
+                <Button Command="{Binding DisplayAllUsersCommand}" Content="Update"/>
             </StackPanel>
 
         </Grid>

@@ -20,12 +20,33 @@ namespace SystemCenter01.MVVM.ViewModels
 
 
         [ObservableProperty]
-        private ObservableCollection<UserModel> displayusers = UserService.GetAllUsersAsync();
+        private IEnumerable<UserModel> displayusers;
+
+
+      
+        public DisplayTicketViwModel()
+        {
+            LoadUsersAsync();
+
+        }
+
+        [RelayCommand]
+        public void Display()
+        {
+            LoadUsersAsync();
+        }
+
+
+        [RelayCommand]
+        private async void LoadUsersAsync()
+        {
+            displayusers = await UserService.GetAllUsersAsync();
+        }
 
 
 
         [ObservableProperty]
-        private UserModel selectedContact = null!;
+        private UserModel selectedcontact = null!;
 
 
 
